@@ -1,3 +1,6 @@
+import 'package:card_clone/screens/add_info_page.dart';
+import 'package:get/get.dart';
+
 import '/round_icon.dart';
 import '/round_icon_gray.dart';
 import '/widgets/bottom_nav.dart';
@@ -53,7 +56,9 @@ class LandingPage extends StatelessWidget {
                       ),
                       RoundIconButtonGray(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/addInfoPage');
+                          Get.to(AddInfoPage());
+
+                          // Navigator.pushNamed(context, '/addInfoPage');
                         },
                         icon: FontAwesomeIcons.plus,
                       ),
@@ -68,7 +73,8 @@ class LandingPage extends StatelessWidget {
                     children: [
                       RoundIconButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/addInfoPage');
+                          Get.to(AddInfoPage());
+                          // Navigator.pushNamed(context, '/addInfoPage');
                         },
                         icon: FontAwesomeIcons.plus,
                       ),

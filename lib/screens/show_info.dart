@@ -7,8 +7,8 @@ class ShowInfo extends StatelessWidget {
   final Contact _contact = Get.find();
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
+    // double screenWidth = MediaQuery.of(context).size.width;
+    // double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: scaffolBackGroundColor,
       resizeToAvoidBottomInset: false,
@@ -22,7 +22,7 @@ class ShowInfo extends StatelessWidget {
                 'Close',
                 style: TextStyle(
                   color: blueColor,
-                  fontSize: screenHeight * 0.025,
+                  // fontSize: screenHeight * 0.025,
                 ),
               ),
             ),
@@ -34,7 +34,7 @@ class ShowInfo extends StatelessWidget {
                 'Edit',
                 style: TextStyle(
                   color: blueColor,
-                  fontSize: screenHeight * 0.025,
+                  // fontSize: screenHeight * 0.025,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -72,7 +72,7 @@ class ShowInfo extends StatelessWidget {
                         )),*/
                     Text("Hello"),
                     Text('How Are you?'),
-                    Obx(() => Text(_contact.role.value)),
+                    Obx(() => Text(_contact.name.value)),
                   ],
                 ),
                 IconButton(icon: Icon(Icons.share), onPressed: () {})

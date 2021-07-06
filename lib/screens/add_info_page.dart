@@ -6,9 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
-final GlobalKey<AddInfoFormState> keyForm = GlobalKey<AddInfoFormState>();
-
 class AddInfoPage extends StatelessWidget {
+  final GlobalKey<AddInfoFormState> keyForm = GlobalKey<AddInfoFormState>();
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;

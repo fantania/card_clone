@@ -42,23 +42,27 @@ class AddInfoFormState extends State<AddInfoForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          TextFormField(
-            style: TextStyle(color: textFieldTextColor),
-            decoration: InputDecoration(
-                fillColor: textFieldfillColor,
-                filled: true,
-                hintText: addName),
-            validator: (value) {
-              if (value.isEmpty) {
-                return textForEmptyName;
-              }
-              return null;
-            },
-            onChanged: (val) {
-              print('Entered value $val');
-              _name = val;
-            },
+          myTextFormField(
+            hintText: addName,
+            fillColor: textFieldfillColor,
+            errorText: textForEmptyName,
+            storage: _name,
           ),
+          // TextFormField(
+          //   style: TextStyle(color: textFieldTextColor),
+          //   decoration: InputDecoration(
+          //       fillColor: textFieldfillColor, filled: true, hintText: addName),
+          //   validator: (value) {
+          //     if (value.isEmpty) {
+          //       return textForEmptyName;
+          //     }
+          //     return null;
+          //   },
+          //   onChanged: (val) {
+          //     print('Entered value $val');
+          //     _name = val;
+          //   },
+          // ),
           // TextFieldWidget(
           //   hintText: addName,
           //   textIfEmpty: textForEmptyName,
@@ -187,5 +191,24 @@ class AddInfoFormState extends State<AddInfoForm> {
     } catch (e) {
       print(e);
     }
+  }
+
+  TextFormField myTextFormField(
+      {String hintText, Color fillColor, String errorText, String storage}) {
+    return TextFormField(
+      style: TextStyle(color: textFieldTextColor),
+      decoration: InputDecoration(
+          fillColor: textFieldfillColor, filled: true, hintText: addName),
+      validator: (value) {
+        if (value.isEmpty) {
+          return textForEmptyName;
+        }
+        return null;
+      },
+      onChanged: (val) {
+        print('Entered value $val');
+        _name = val;
+      },
+    );
   }
 }

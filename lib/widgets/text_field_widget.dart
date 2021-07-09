@@ -26,7 +26,7 @@ class TextFieldWidget extends StatelessWidget {
         }
         return null;
       },
-      onSaved: (String val) {
+      onChanged: (String val) {
         print('Entered value $val');
         textFieldValue = val;
       },

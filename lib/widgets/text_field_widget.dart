@@ -30,6 +30,13 @@ class TextFieldWidget extends StatelessWidget {
         print('Entered value $val');
         textFieldValue = val;
       },
+
+      /*
+      onChanged: (val) {
+              print('Entered value $val');
+              _name = val;
+            },
+      */
     );
   }
 }

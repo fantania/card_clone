@@ -17,12 +17,12 @@ class AddInfoForm extends StatefulWidget {
 class AddInfoFormState extends State<AddInfoForm> {
   final _formKey = GlobalKey<FormState>();
   String _name = '';
-  // String _role;
-  // String _organization;
-  // String _cellNumber;
-  // String _poneNumber;
-  // String _faxNumber;
-  // String _emailAddress;
+  String _role = '';
+  String _organization = '';
+  String _cellNumber = '';
+  String _poneNumber = '';
+  //String _faxNumber;
+  String _emailAddress = '';
   // String _websiteAddress;
   // String _streetAddress;
   // String _facebook;
@@ -45,8 +45,44 @@ class AddInfoFormState extends State<AddInfoForm> {
           myTextFormField(
             hintText: addName,
             fillColor: textFieldfillColor,
+            txtColor: textFieldTextColor,
             errorText: textForEmptyName,
             storage: _name,
+          ),
+          myTextFormField(
+            hintText: addRole,
+            fillColor: textFieldfillColor,
+            txtColor: textFieldTextColor,
+            errorText: textForEmptyRole,
+            storage: _role,
+          ),
+          myTextFormField(
+            hintText: addOrganization,
+            fillColor: textFieldfillColor,
+            txtColor: textFieldTextColor,
+            errorText: textForEmptyOrganization,
+            storage: _organization,
+          ),
+          myTextFormField(
+            hintText: cellNumber,
+            fillColor: textFieldfillColor,
+            txtColor: textFieldTextColor,
+            errorText: textForEmptycellNumber,
+            storage: _cellNumber,
+          ),
+          myTextFormField(
+            hintText: phoneNumber,
+            fillColor: textFieldfillColor,
+            txtColor: textFieldTextColor,
+            errorText: textForEmptyphoneNumber,
+            storage: _poneNumber,
+          ),
+          myTextFormField(
+            hintText: emailAddress,
+            fillColor: textFieldfillColor,
+            txtColor: textFieldTextColor,
+            errorText: textForEmptyemailAddress,
+            storage: _emailAddress,
           ),
           // TextFormField(
           //   style: TextStyle(color: textFieldTextColor),
@@ -164,11 +200,15 @@ class AddInfoFormState extends State<AddInfoForm> {
 
   putValueInController() {
     _contact.name.value = _name;
-    // _contact.role.value = _role;
-    // _contact.organization.value = _organization;
-    // _contact.cellNumber.value = _cellNumber;
-    // _contact.phoneNumber.value = _name;
-    // _contact.emailAdress.value = _emailAddress;
+    print("_contact.name.value ${_contact.name.value}");
+    print("name $_name");
+    _contact.role.value = _role;
+    print("_contact.role.value ${_contact.role.value}");
+    print("role $_role");
+    _contact.organization.value = _organization;
+    _contact.cellNumber.value = _cellNumber;
+    _contact.phoneNumber.value = _poneNumber;
+    _contact.emailAdress.value = _emailAddress;
     // _contact.webSite.value = _websiteAddress;
     // _contact.address.value = _streetAddress;
     // _contact.facebook.value = _facebook;
@@ -193,21 +233,25 @@ class AddInfoFormState extends State<AddInfoForm> {
     }
   }
 
-  TextFormField myTextFormField(
-      {String hintText, Color fillColor, String errorText, String storage}) {
+  TextFormField myTextFormField({
+    String hintText,
+    Color fillColor,
+    Color txtColor,
+    String errorText,
+    String storage,
+  }) {
     return TextFormField(
-      style: TextStyle(color: textFieldTextColor),
+      style: TextStyle(color: txtColor),
       decoration: InputDecoration(
-          fillColor: textFieldfillColor, filled: true, hintText: addName),
+          fillColor: fillColor, filled: true, hintText: hintText),
       validator: (value) {
         if (value.isEmpty) {
-          return textForEmptyName;
+          return errorText;
         }
         return null;
       },
       onChanged: (val) {
-        print('Entered value $val');
-        _name = val;
+        storage = val;
       },
     );
   }

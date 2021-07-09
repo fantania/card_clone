@@ -46,14 +46,14 @@ class ShowInfo extends StatelessWidget {
           child: Container(
         child: Column(
           children: [
-            /*Image.asset(
+            Image.asset(
               '${path}logo.png',
-              /*width: 600,
-              height: 240,*/
+              width: 50,
+              height: 50,
               fit: BoxFit
                   .cover, /*BoxFit.cover tells the framework that the image should be 
                   as small as possible but cover its entire render box.*/
-            //),*/
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -64,19 +64,37 @@ class ShowInfo extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    /* Obx(() => Text(
-                          _contact.name.value,
-                          style: TextStyle(
-                            color: Colors.black12,
-                          ),
-                        )),*/
-                    Text("Hello"),
-                    Text('How Are you?'),
                     Obx(() => Text(_contact.name.value)),
+                    Obx(() => Text(_contact.role.value)),
                   ],
                 ),
-                IconButton(icon: Icon(Icons.share), onPressed: () {})
+                IconButton(icon: Icon(Icons.share), onPressed: () {}),
               ],
+            ),
+            Container(
+              padding: EdgeInsets.all(40),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      IconButton(icon: Icon(Icons.phone), onPressed: () {}),
+                      Obx(() => Text(_contact.phoneNumber.value)),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      IconButton(icon: Icon(Icons.message), onPressed: () {}),
+                      Obx(() => Text(_contact.cellNumber.value)),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      IconButton(icon: Icon(Icons.email), onPressed: () {}),
+                      Obx(() => Text(_contact.emailAdress.value)),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),

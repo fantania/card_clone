@@ -1,6 +1,6 @@
 import '/constaints.dart';
 
-import '/widgets/text_field_widget.dart';
+// import '/widgets/text_field_widget.dart';
 // import '/widgets/text_field_widget_with_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,16 +13,16 @@ class AddInfoForm extends StatefulWidget {
     return AddInfoFormState();
   }
 }
-
+var _formKey = GlobalKey<FormState>();
 class AddInfoFormState extends State<AddInfoForm> {
-  final _formKey = GlobalKey<FormState>();
-  String _name = '';
-  String _role = '';
-  String _organization = '';
-  String _cellNumber = '';
-  String _poneNumber = '';
+  
+  // String _name = '';
+  // String _role = '';
+  // String _organization = '';
+  // String _cellNumber = '';
+  // String _poneNumber = '';
   //String _faxNumber;
-  String _emailAddress = '';
+  // String _emailAddress = '';
   // String _websiteAddress;
   // String _streetAddress;
   // String _facebook;
@@ -47,43 +47,44 @@ class AddInfoFormState extends State<AddInfoForm> {
             fillColor: textFieldfillColor,
             txtColor: textFieldTextColor,
             errorText: textForEmptyName,
-            storage: _name,
+            storage: _contact.name,
           ),
           myTextFormField(
             hintText: addRole,
             fillColor: textFieldfillColor,
             txtColor: textFieldTextColor,
             errorText: textForEmptyRole,
-            storage: _role,
+            storage: _contact.role,
           ),
           myTextFormField(
             hintText: addOrganization,
             fillColor: textFieldfillColor,
             txtColor: textFieldTextColor,
             errorText: textForEmptyOrganization,
-            storage: _organization,
+            storage: _contact.organization,
           ),
           myTextFormField(
             hintText: cellNumber,
             fillColor: textFieldfillColor,
             txtColor: textFieldTextColor,
             errorText: textForEmptycellNumber,
-            storage: _cellNumber,
+            storage: _contact.cellNumber,
           ),
           myTextFormField(
             hintText: phoneNumber,
             fillColor: textFieldfillColor,
             txtColor: textFieldTextColor,
             errorText: textForEmptyphoneNumber,
-            storage: _poneNumber,
+            storage: _contact.phoneNumber,
           ),
           myTextFormField(
             hintText: emailAddress,
             fillColor: textFieldfillColor,
             txtColor: textFieldTextColor,
             errorText: textForEmptyemailAddress,
-            storage: _emailAddress,
+            storage: _contact.emailAddress,
           ),
+          //! End
           // TextFormField(
           //   style: TextStyle(color: textFieldTextColor),
           //   decoration: InputDecoration(
@@ -198,34 +199,11 @@ class AddInfoFormState extends State<AddInfoForm> {
     );
   }
 
-  putValueInController() {
-    _contact.name.value = _name;
-    print("_contact.name.value ${_contact.name.value}");
-    print("name $_name");
-    _contact.role.value = _role;
-    print("_contact.role.value ${_contact.role.value}");
-    print("role $_role");
-    _contact.organization.value = _organization;
-    _contact.cellNumber.value = _cellNumber;
-    _contact.phoneNumber.value = _poneNumber;
-    _contact.emailAdress.value = _emailAddress;
-    // _contact.webSite.value = _websiteAddress;
-    // _contact.address.value = _streetAddress;
-    // _contact.facebook.value = _facebook;
-    // _contact.skype.value = _skype;
-    // _contact.linkedIn.value = _linkedin;
-    // _contact.twitter.value = _twitter;
-    // _contact.instagram.value = _instagram;
-    // _contact.tiktok.value = _tiktok;
-  }
-
   void validateIput() {
     try {
       if (_formKey.currentState.validate()) {
         print('_contact.name.value: ${_contact.name.value}');
-        print('_name: $_name');
-//    If all data are correct then save data to out variables
-        putValueInController();
+        // print('_name: $_name');
         _formKey.currentState.save();
       }
     } catch (e) {
@@ -238,7 +216,7 @@ class AddInfoFormState extends State<AddInfoForm> {
     Color fillColor,
     Color txtColor,
     String errorText,
-    String storage,
+    RxString storage,
   }) {
     return TextFormField(
       style: TextStyle(color: txtColor),
@@ -251,7 +229,7 @@ class AddInfoFormState extends State<AddInfoForm> {
         return null;
       },
       onChanged: (val) {
-        storage = val;
+        storage.value = val;
       },
     );
   }

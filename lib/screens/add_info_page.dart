@@ -3,11 +3,13 @@ import '/screens/add_info_form.dart';
 import '/screens/show_info.dart';
 import '/widgets/bottom_nav.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
+
 class AddInfoPage extends StatelessWidget {
-  final GlobalKey<AddInfoFormState> keyForm = GlobalKey<AddInfoFormState>();
+  // final GlobalKey<AddInfoFormState> keyForm = GlobalKey<AddInfoFormState>();
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -16,36 +18,23 @@ class AddInfoPage extends StatelessWidget {
       backgroundColor: scaffolBackGroundColor,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                'Cancel',
-                style: TextStyle(
-                  color: blueColor,
-                  fontSize: screenHeight * 0.025,
-                ),
-              ),
-            ),
-            Text('Add'),
-            TextButton(
+        title: Text('Add Form'),
+        leading: IconButton(
+            onPressed: () => Get.back(),
+            icon: Icon(
+              Icons.cancel,
+              color: Colors.redAccent,
+            )),
+        actions: [
+          IconButton(
               onPressed: () {
-                keyForm.currentState.validateIput();
                 Get.to(ShowInfo());
               },
-              child: Text(
-                'Save',
-                style: TextStyle(
-                  color: blueColor,
-                  fontSize: screenHeight * 0.025,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ],
-        ),
+              icon: Icon(
+                Icons.save,
+                color: Colors.greenAccent[700],
+              )),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -62,15 +51,14 @@ class AddInfoPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Icon(
-                      FontAwesomeIcons.user,
+                      Icons.person,
                       size: screenHeight * 0.14,
+                      color: Colors.grey,
                     ),
                   ),
                   Expanded(
-                    child: Icon(
-                      FontAwesomeIcons.image,
-                      size: screenHeight * 0.14,
-                    ),
+                    child: Icon(Icons.image_rounded,
+                        size: screenHeight * 0.14, color: Colors.grey),
                   ),
                 ],
               ),
@@ -91,17 +79,17 @@ class AddInfoPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () => null,
                     child: Text(
-                      'Add Image',
+                      'Upload Image',
                       style: TextStyle(
                           color: Colors.black, fontSize: screenHeight * 0.018),
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () => null,
                     child: Text(
-                      'Add Logo',
+                      'Upload Logo',
                       style: TextStyle(
                           color: Colors.black, fontSize: screenHeight * 0.018),
                     ),
@@ -112,7 +100,7 @@ class AddInfoPage extends StatelessWidget {
             SizedBoxBetweenFormFields(
               screenHeight: screenHeight,
             ),
-            AddInfoForm(key: keyForm),
+            AddInfoForm(),
           ],
         ),
       ),

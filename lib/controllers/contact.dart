@@ -6,7 +6,7 @@ class Contact extends GetxController {
   RxString organization = ''.obs;
   RxString cellNumber = ''.obs;
   RxString phoneNumber = ''.obs;
-  RxString emailAdress = ''.obs;
+  RxString emailAddress = ''.obs;
   RxString webSite = ''.obs;
   RxString address = ''.obs;
   RxString facebook = ''.obs;
